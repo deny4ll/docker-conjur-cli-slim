@@ -12,9 +12,11 @@ RUN apk update && apk upgrade && apk --update add \
     libstdc++ tzdata bash ca-certificates gcc make \
     &&  echo 'gem: --no-document' > /etc/gemrc
 
-RUN apk --update add ruby-dev g++
+RUN apk --update add ruby-dev g++ 
 
 RUN gem install conjur-cli --version "=5.6.4"
+
+RUN apk --update add openssh-client
 
 # Define default command.
 CMD ["/bin/bash"]
